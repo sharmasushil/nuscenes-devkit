@@ -1820,7 +1820,7 @@ class NuScenesMapExplorer:
         def int_coords(x):
             # function to round and convert to int
             return np.array(x).round().astype(np.int32)
-        exteriors = [int_coords(poly.exterior.coords) for poly in polygons]
+        exteriors = [int_coords(poly.exterior.coords) for poly in list(polygons)]
         interiors = [int_coords(pi.coords) for poly in polygons for pi in poly.interiors]
         cv2.fillPoly(mask, exteriors, 1)
         cv2.fillPoly(mask, interiors, 0)
